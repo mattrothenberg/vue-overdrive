@@ -2,7 +2,7 @@
   "name": "vue-overdrive",
   "version": "0.0.1",
   "description": "Super easy magic-move transitions for Vue apps, powered by Ramjet",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/mattrothenberg/vue-overdrive",
   "author": "Matt Rothenberg",
   "license": "MIT",
