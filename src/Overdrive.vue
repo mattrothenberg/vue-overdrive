@@ -33,6 +33,11 @@ export default {
       type: Number,
       required: false,
       default: 250
+    },
+    easing: {
+      type: Function,
+      required: false,
+      default: ramjet.linear
     }
   },
   computed: {
@@ -42,6 +47,7 @@ export default {
   },
   watch: {
     comps: {
+      immediate: true,
       handler (nv, ov) {
         const self = this
         if (!nv && !ov) return
@@ -54,7 +60,7 @@ export default {
             ramjet.hide(clone)
             ramjet.transform(clone, b.el, {
               duration: self.duration,
-              easing: ramjet.easeIn,
+              easing: self.easing,
               done () {
                 ramjet.show(b.el)
                 document.body.removeChild(clone)
@@ -63,8 +69,7 @@ export default {
               }
             })
           })
-        },
-        immediate: true
+        }
       }
   },
   mounted () {

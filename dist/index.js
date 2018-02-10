@@ -116,6 +116,11 @@ var getPosition = function getPosition(node) {
       type: Number,
       required: false,
       default: 250
+    },
+    easing: {
+      type: Function,
+      required: false,
+      default: __WEBPACK_IMPORTED_MODULE_0_ramjet___default.a.linear
     }
   },
   computed: {
@@ -125,6 +130,7 @@ var getPosition = function getPosition(node) {
   },
   watch: {
     comps: {
+      immediate: true,
       handler: function handler(nv, ov) {
         var self = this;
         if (!nv && !ov) return;
@@ -140,7 +146,7 @@ var getPosition = function getPosition(node) {
           __WEBPACK_IMPORTED_MODULE_0_ramjet___default.a.hide(clone);
           __WEBPACK_IMPORTED_MODULE_0_ramjet___default.a.transform(clone, b.el, {
             duration: self.duration,
-            easing: __WEBPACK_IMPORTED_MODULE_0_ramjet___default.a.easeIn,
+            easing: self.easing,
             done: function done() {
               __WEBPACK_IMPORTED_MODULE_0_ramjet___default.a.show(b.el);
               document.body.removeChild(clone);
@@ -149,9 +155,7 @@ var getPosition = function getPosition(node) {
             }
           });
         });
-      },
-
-      immediate: true
+      }
     }
   },
   mounted: function mounted() {
