@@ -145,6 +145,7 @@ var getPosition = function getPosition(node) {
               __WEBPACK_IMPORTED_MODULE_0_ramjet___default.a.show(b.el);
               document.body.removeChild(clone);
               self.$odStore.dispatch('REMOVE_COMPONENT', { id: self.id });
+              self.$emit('animation-end');
             }
           });
         });

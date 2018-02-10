@@ -59,6 +59,7 @@ export default {
                 ramjet.show(b.el)
                 document.body.removeChild(clone)
                 self.$odStore.dispatch('REMOVE_COMPONENT', {id: self.id})
+                self.$emit('animation-end')
               }
             })
           })
