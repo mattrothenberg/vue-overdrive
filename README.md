@@ -94,17 +94,17 @@ And in `Rectangle.vue` –
 | `@animation-end` 	| Fires once the ramjet animation has completed 	|
 
 ## Examples
-### 1) Morph Shapes
+### 1) Morph Shapes ([source](examples/src/router/index.js#L22-L38))
 https://vue-overdrive.netlify.com/#/shapes
 
 <img src="https://imgur.com/YRwM2T8.gif" alt="Shape morph" width="320"/>
 
-### 2) Material-esque transformation
+### 2) Material-esque transformation ([source](examples/src/router/index.js#L41-L53))
 https://vue-overdrive.netlify.com/#/libraries
 
 <img src="https://imgur.com/B6BYxRv.gif" alt="Material transformation" width="320"/>
 
-### 3) iOS-inspired icon effect
+### 3) iOS-inspired icon effect ([source](examples/src/router/index.js#L54-L65))
 https://vue-overdrive.netlify.com/#/icons
 
 <img src="https://imgur.com/vrb7QQ2.gif" alt="iOS icon effect" width="320"/>
