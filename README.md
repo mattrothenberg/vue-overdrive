@@ -121,3 +121,8 @@ If you're not using Vue Router (and instead using Vue's built-in `v-if` directiv
 | Event            	| Description                                   	|
 |------------------	|-----------------------------------------------	|
 | `@animation-end` 	| Fires once the ramjet animation has completed 	|
+
+
+## Todo
+- [ ] Minimize the jank (especially with `v-if`)
+- [ ] Find a non-Vuex solution for state management
