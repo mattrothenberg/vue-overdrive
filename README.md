@@ -1,11 +1,97 @@
 # vue-overdrive
 Super easy magic-move transitions for Vue apps, powered by Ramjet
 
+```bash
+$ yarn add vue-overdrive
+$ npm install vue-overdrive --save
+```
+
 ## What is it?
 A Vue.js port of the amazing [React Overdrive](https://github.com/berzniz/react-overdrive), using [Ramjet](https://github.com/Rich-Harris/ramjet) under the hood.
 
 ## How does it work?
-*coming soon*
+Just like with React Overdrive, wrap any two elements in a <overdrive id=""></overdrive> component. Add the same id to create a transition between the elements.
+
+### Import and install
+
+```js
+import Overdrive from 'vue-overdrive'
+Vue.use(Overdrive)
+```
+
+### Set up (at least) two different routes with Vue Router
+
+Inside your routes file –
+```js
+{
+  path: '/circle',
+  name: 'Circle',
+  component: Circle
+},
+{
+  path: '/rectangle',
+  name: 'Rectangle',
+  component: Rectangle 
+}
+```
+
+### Scaffold your component
+
+In `Circle.vue`:
+```vue
+<template>
+  <overdrive id="element" :easing="easing" :duration="350">
+    <div class="circle"></div>
+  </overdrive>
+</template>
+
+<script>
+import * as easing from 'eases/quart-in-out' // Bring 'yr own easing functions!
+export default {
+  name: 'el-circle',
+  data () {
+    return {
+      easing
+    }
+  }
+}
+</script>
+
+<style scoped>
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: blue;
+    float: left;
+  }
+</style>
+
+```
+
+And in `Rectangle.vue` –
+
+```vue
+<template>
+  <overdrive id="element">
+    <div class="rectangle"></div>
+  </overdrive>
+</template>
+```
+
+### Customize it (API)
+
+
+| Prop     	| Description                                          	| Default Value   	|
+|----------	|------------------------------------------------------	|-----------------	|
+| id       	| Required. A unique string to identify the component. 	|                 	|
+| tag      	| Wrapping element type                                	| `div`           	|
+| duration 	| Animation duration (in milliseconds)                 	| `250`           	|
+| easing   	| Easing Function (must pass a function)               	| `ramjet.linear` 	|
+
+| Event            	| Description                                   	|
+|------------------	|-----------------------------------------------	|
+| `@animation-end` 	| Fires once the ramjet animation has completed 	|
 
 ## Examples
 ### 1) Morph Shapes
