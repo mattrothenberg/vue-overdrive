@@ -52,7 +52,7 @@ Inside your routes file –
 }
 ```
 
-### Scaffold your component
+### Scaffold your components
 
 In `Circle.vue`:
 ```vue
@@ -94,6 +94,18 @@ And in `Rectangle.vue` –
     <div class="rectangle"></div>
   </overdrive>
 </template>
+```
+
+### Usage with `v-if`
+If you're not using Vue Router (and instead using Vue's built-in `v-if` directive), be sure to specify a unique `key` prop on each instance of `<overdrive>`
+
+```vue
+<overdrive key="a" id="window" :duration="450" v-if="!windowOpen">
+  <!-- some element -->
+</overdrive>
+<overdrive key="b" id="window" :duration="450" v-if="windowOpen">
+  <!-- some element -->
+</overdrive>
 ```
 
 ### Customize it (API)
