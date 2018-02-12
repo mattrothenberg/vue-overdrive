@@ -9,11 +9,18 @@ import LibraryDetail from '@/components/LibraryDetail'
 import Shapes from '@/components/Shapes'
 import IconIndex from '@/components/IconIndex'
 import IconDetail from '@/components/IconDetail'
+import Sandbox from '@/components/Sandbox'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/sandbox',
+      components: {
+        main: Sandbox
+      }
+    },
     {
       path: '/shapes',
       components: {

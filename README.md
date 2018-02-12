@@ -125,4 +125,4 @@ If you're not using Vue Router (and instead using Vue's built-in `v-if` directiv
 
 ## Todo
 - [ ] Minimize the jank (especially with `v-if`)
-- [ ] Find a non-Vuex solution for state management
+- [x] Find a non-Vuex solution for state management

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Overdrive from 'vue-overdrive'
+import Overdrive from '@/components/Overdrive'
 import store from './store'
 Vue.use(Overdrive)
 Vue.config.productionTip = false
