@@ -1,6 +1,8 @@
 # vue-overdrive
 Super easy magic-move transitions for Vue apps, powered by Ramjet
 
+[![npm version](https://badge.fury.io/js/vue-overdrive.svg)](https://badge.fury.io/js/vue-overdrive)
+
 ```bash
 $ yarn add vue-overdrive
 $ npm install vue-overdrive --save
