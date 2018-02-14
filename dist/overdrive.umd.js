@@ -636,6 +636,9 @@ var plugin = {
   }
 };
 
+var overdrive = Overdrive;
+
+exports.overdrive = overdrive;
 exports.default = plugin;
 
 Object.defineProperty(exports, '__esModule', { value: true });

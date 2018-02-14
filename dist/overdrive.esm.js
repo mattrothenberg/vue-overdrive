@@ -630,4 +630,7 @@ var plugin = {
   }
 };
 
+var overdrive = Overdrive;
+
 export default plugin;
+export { overdrive };

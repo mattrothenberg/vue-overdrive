@@ -6,4 +6,6 @@ const plugin = {
   }
 }
 
+export const overdrive = Overdrive
+
 export default plugin
