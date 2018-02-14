@@ -4,7 +4,7 @@ import { minify } from 'uglify-es'
 
 const config = Object.assign({}, base, {
   output: {
-    file: 'dist/ovedrive.min.js',
+    file: 'dist/overdrive.min.js',
     format: 'iife',
   }
 })
