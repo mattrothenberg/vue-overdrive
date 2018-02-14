@@ -3,7 +3,6 @@ import Overdrive from './Overdrive.vue'
 export function install (Vue) {
 	if (install.installed) return
 	install.installed = true
-	console.log('here', Overdrive)
 	Vue.component('overdrive', Overdrive)
 }
 
@@ -24,14 +23,11 @@ const plugin = {
 // Auto-install
 let GlobalVue = null
 if (typeof window !== 'undefined') {
-	console.log('window')
 	GlobalVue = window.Vue
 } else if (typeof global !== 'undefined') {
-	console.log('global')
 	GlobalVue = global.Vue
 }
 if (GlobalVue) {
-	console.log('made it')
 	GlobalVue.use(plugin)
 }
 

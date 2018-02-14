@@ -627,7 +627,7 @@ var Overdrive = {
 function install(Vue) {
 	if (install.installed) return;
 	install.installed = true;
-	console.log('here', Overdrive);
+	console.log('here');
 	Vue.component('overdrive', Overdrive);
 }
 
@@ -655,6 +655,7 @@ if (typeof window !== 'undefined') {
 	GlobalVue = global.Vue;
 }
 if (GlobalVue) {
+	console.log(GlobalVue);
 	console.log('made it');
 	GlobalVue.use(plugin);
 }

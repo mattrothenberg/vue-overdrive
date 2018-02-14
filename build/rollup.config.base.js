@@ -18,10 +18,7 @@ export default {
     cjs({
       include: 'node_modules/**',
     }),
-    vue({
-      css (style) {
-      },
-    }),
+    vue(),
     babel({
       exclude: 'node_modules/**'
     }),
