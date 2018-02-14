@@ -630,15 +630,40 @@ var Overdrive = {
   }
 };
 
+function install(Vue) {
+	if (install.installed) return;
+	install.installed = true;
+
+	Vue.component('overdrive', Overdrive);
+}
+
+var VOverdrive = Overdrive;
+
 var plugin = {
-  install: function install(Vue) {
-    Vue.component(Overdrive.name, Overdrive);
-  }
+	install: install,
+
+	get enabled() {
+		return state.enabled;
+	},
+
+	set enabled(value) {
+		state.enabled = value;
+	}
 };
 
-var overdrive = Overdrive;
+// Auto-install
+var GlobalVue = null;
+if (typeof window !== 'undefined') {
+	GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+	GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+	GlobalVue.use(plugin);
+}
 
-exports.overdrive = overdrive;
+exports.install = install;
+exports.VOverdrive = VOverdrive;
 exports.default = plugin;
 
 Object.defineProperty(exports, '__esModule', { value: true });
