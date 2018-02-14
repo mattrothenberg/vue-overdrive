@@ -1,9 +1,6 @@
 import Overdrive from './Overdrive.vue'
 
 export function install (Vue) {
-	if (install.installed) return
-	install.installed = true
-
 	Vue.component('overdrive', Overdrive)
 }
 
