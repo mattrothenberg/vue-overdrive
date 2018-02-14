@@ -2,10 +2,10 @@ import Overdrive from './Overdrive.vue'
 
 const plugin = {
   install (Vue) {
-    Vue.component(Overdrive.name, Overdrive)
+    Vue.component('overdrive', Overdrive)
   }
 }
 
-export const overdrive = Overdrive
+export const VOverdrive = Overdrive
 
 export default plugin
