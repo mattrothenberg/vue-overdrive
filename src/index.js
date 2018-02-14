@@ -1,5 +1,4 @@
 import Overdrive from './Overdrive.vue'
-import Vue from 'vue'
 
 const plugin = {
   install (Vue) {
