@@ -38,6 +38,17 @@ import Overdrive from 'vue-overdrive'
 Vue.use(Overdrive)
 ```
 
+or
+
+```js
+import { VOverdrive } from 'vue-overdrive'
+
+// Register the component locally
+components: {
+  'overdrive': VOverdrive
+}
+```
+
 ### Set up (at least) two different routes with Vue Router
 
 Inside your routes file –
