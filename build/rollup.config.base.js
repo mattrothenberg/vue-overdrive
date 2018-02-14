@@ -8,7 +8,7 @@ const config = require('../package.json')
 
 export default {
   input: 'src/index.js',
-  name: 'v-tooltip',
+  name: 'overdrive',
   plugins: [
     resolve({
       jsnext: true,

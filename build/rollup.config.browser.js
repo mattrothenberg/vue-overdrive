@@ -7,8 +7,7 @@ const config = Object.assign({}, base, {
   output: {
     file: 'dist/ovedrive.min.js',
     format: 'iife',
-  },
-  name: 'Overdrive',
+  }
 })
 
 config.plugins.push(uglify({}, minify))
