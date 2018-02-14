@@ -1,3 +1,5 @@
+<img width="120" src="https://d2ffutrenqvap3.cloudfront.net/items/2g0U2k0W2b3S2b1E2y08/logo.svg"/>
+
 # vue-overdrive
 Super easy magic-move transitions for Vue apps, powered by Ramjet
 
