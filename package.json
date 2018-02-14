@@ -1,6 +1,6 @@
 {
   "name": "vue-overdrive",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Super easy magic-move transitions for Vue apps, powered by Ramjet",
   "main": "dist/overdrive.umd.js",
   "module": "dist/overdrive.esm.js",
