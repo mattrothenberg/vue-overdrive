@@ -524,7 +524,7 @@ var Overdrive = {
   name: 'overdrive',
   props: {
     id: {
-      type: String,
+      type: [String, Number],
       required: true
     },
     tag: {
