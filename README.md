@@ -1,13 +1,26 @@
+<p align="center">
 <img width="120" src="https://d2ffutrenqvap3.cloudfront.net/items/2g0U2k0W2b3S2b1E2y08/logo.svg"/>
+</p>
 
-# vue-overdrive
-Super easy magic-move transitions for Vue apps, powered by Ramjet
+<h2 align="center">vue-overdrive</h2>
+<h5 align="center">Super easy magic-move transitions for Vue apps, powered by Ramjet</h5>
+<p align="center">
+  <a href="https://badge.fury.io/js/vue-overdrive">
+    <img src="https://badge.fury.io/js/vue-overdrive.svg" alt="npm version">
+  </a>
+</p>
 
-[![npm version](https://badge.fury.io/js/vue-overdrive.svg)](https://badge.fury.io/js/vue-overdrive)
 
-```bash
-$ yarn add vue-overdrive
-$ npm install vue-overdrive --save
+## Project Install
+
+``` bash
+# npm
+npm install vue-overdrive
+```
+
+``` bash
+# yarn
+yarn add vue-overdrive
 ```
 
 ## Examples
@@ -128,7 +141,7 @@ If you're not using Vue Router (and instead using Vue's built-in `v-if` directiv
 
 | Prop     	| Description                                          	| Default Value   	|
 |----------	|------------------------------------------------------	|-----------------	|
-| id       	| Required. A unique string to identify the component. 	|                 	|
+| id       	| Required. A unique string or number to identify the component. 	|                 	|
 | tag      	| Wrapping element type                                	| `div`           	|
 | duration 	| Animation duration (in milliseconds)                 	| `250`           	|
 | easing   	| Easing Function (must pass a function)               	| `ramjet.linear` 	|
