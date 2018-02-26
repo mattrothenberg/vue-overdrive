@@ -24,6 +24,9 @@ yarn add vue-overdrive
 ```
 
 ## Examples
+
+<img src="https://thumbs.gfycat.com/GlamorousThoroughHumpbackwhale-size_restricted.gif" alt="Material" width="320"/>
+
 ### 1) Morph Shapes ([source](examples/src/router/index.js#L22-L38))
 https://vue-overdrive.netlify.com/#/shapes
 
