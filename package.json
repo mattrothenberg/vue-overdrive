@@ -19,7 +19,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-latest": "^6.24.1",
     "css-loader": "^0.28.9",
-    "rollup": "^0.5.5",
+    "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-node-resolve": "^3.0.2",
