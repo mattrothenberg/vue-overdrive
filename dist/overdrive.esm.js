@@ -539,8 +539,6 @@ var Overdrive = {
   },
   data: function data() {
     return {
-      onShowLock: false,
-      loading: true,
       cachedPos: {}
     };
   },
@@ -597,9 +595,6 @@ var Overdrive = {
       };
     },
     onShow: function onShow() {
-      if (this.onShowLock) return;
-      this.onShowLock = true;
-
       if (components[this.id]) {
         var _components$id = components[this.id],
             prevPosition = _components$id.prevPosition,
@@ -607,8 +602,6 @@ var Overdrive = {
 
         components[this.id] = false;
         this.animate(prevPosition, el);
-      } else {
-        this.loading = false;
       }
     }
   },

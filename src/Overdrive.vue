@@ -28,8 +28,6 @@ export default {
   },
   data () {
     return {
-      onShowLock: false,
-      loading: true,
       cachedPos: {}
     }
   },
@@ -82,15 +80,11 @@ export default {
     },
     onShow () {
       const self = this
-      if (this.onShowLock) return
-      this.onShowLock = true
 
       if (components[this.id]) {
         const {prevPosition, el} = components[this.id]
         components[this.id] = false
         this.animate(prevPosition, el)
-      } else {
-        this.loading = false
       }
     }
   },
