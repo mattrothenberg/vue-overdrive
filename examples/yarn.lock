@@ -5565,9 +5565,9 @@ vue-loader@^13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-overdrive@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/vue-overdrive/-/vue-overdrive-0.0.5.tgz#4d507f519f21298164bb5be75c020aa3019bfc1e"
+vue-overdrive@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/vue-overdrive/-/vue-overdrive-0.0.11.tgz#3dafc8a38dd41cf5e6d6b6eb1af6fa7e1a2927c6"
   dependencies:
     ramjet "^0.5.0"
 

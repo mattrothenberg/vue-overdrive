@@ -3,7 +3,7 @@
     <ul class="list-reset">
       <li class="inline-block mr-8" v-for="(library, index) in libraries" :key="index">
         <overdrive :id="library.slug">
-          <router-link :to="calcLink(library)">
+          <router-link :to="calcLink(library)" class="block">
             <div class="lib-tile w-24 h-24 rounded-full border hover:border-grey" :style="calcBackground(library)"></div>
           </router-link>
         </overdrive>

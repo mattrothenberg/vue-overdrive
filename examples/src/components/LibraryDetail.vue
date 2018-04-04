@@ -45,6 +45,9 @@ export default {
     handleAnimEnd () {
       this.loaded = true
     }
+  },
+  mounted () {
+    this.loaded = true
   }
 }
 </script>

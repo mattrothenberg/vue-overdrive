@@ -7,7 +7,7 @@ export default {
   name: 'overdrive',
   props: {
     id: {
-      type: String,
+      type: [String, Number],
       required: true 
     },
     tag: {
@@ -28,7 +28,6 @@ export default {
   },
   data () {
     return {
-      onShowLock: false,
       loading: true,
       cachedPos: {}
     }
@@ -82,8 +81,6 @@ export default {
     },
     onShow () {
       const self = this
-      if (this.onShowLock) return
-      this.onShowLock = true
 
       if (components[this.id]) {
         const {prevPosition, el} = components[this.id]
