@@ -1,5 +1,5 @@
 <p align="center">
-<img width="120" src="https://d2ffutrenqvap3.cloudfront.net/items/2g0U2k0W2b3S2b1E2y08/logo.svg"/>
+  <img width="120" src="https://dzwonsemrish7.cloudfront.net/items/0P31353w2O3M130M2K3r/Artboard%201.png"/>
 </p>
 
 <h2 align="center">vue-overdrive</h2>
