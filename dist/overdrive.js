@@ -9606,6 +9606,7 @@ var _default = {
 
       var cb = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
       var a = document.querySelector('[data-clone]');
+      console.log(a);
       var b = this.$el.firstChild;
       this.animating = true;
       this.transformer = _ramjet.default.transform(a, b, {
@@ -9621,16 +9622,12 @@ var _default = {
       });
 
       _ramjet.default.hide(a, b);
-    }
-  },
-  mounted: function mounted() {
-    var _this2 = this;
+    },
+    handleFirstTimeMatch: function handleFirstTimeMatch() {
+      var _this2 = this;
 
-    var match = components[this.id];
-
-    if (match && !matchedEl) {
       matchedEl = this.id;
-      var clone = this.cloneAndAppend();
+      this.cloneAndAppend();
 
       var cb = function cb(a, b) {
         _ramjet.default.show(b);
@@ -9645,23 +9642,35 @@ var _default = {
 
         _this2.cache();
       });
-    } else if (match && matchedEl) {
+    },
+    handleMatch: function handleMatch() {
+      var _this3 = this;
+
       this.cloneAndAppend();
 
-      var _cb = function _cb(a, b) {
+      var cb = function cb(a, b) {
         _ramjet.default.show(b);
 
         matchedEl = null;
       };
 
       this.$nextTick(function () {
-        _this2.animate(_cb);
+        _this3.animate(cb);
 
         var clone = document.querySelector('[data-clone]');
         document.body.removeChild(clone);
 
-        _this2.cache();
+        _this3.cache();
       });
+    }
+  },
+  mounted: function mounted() {
+    var match = components[this.id];
+
+    if (match && !matchedEl) {
+      this.handleFirstTimeMatch();
+    } else if (match && matchedEl) {
+      this.handleMatch();
       return;
     } else {
       this.cache();
@@ -9778,7 +9787,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56174" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56235" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

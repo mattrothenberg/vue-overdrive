@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <router-view name="main"/>
-    <!-- <div class="icon-wrap inline-block relative">
+    <div class="icon-wrap inline-block relative">
       <transition name="fade">
         <router-view name="icon"></router-view>
       </transition>
-    </div> -->
+    </div>
   </div>
 </template>
 

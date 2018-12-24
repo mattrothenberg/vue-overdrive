@@ -13,6 +13,7 @@ const getPosition = (node, addOffset = false) => {
   const computedStyle = window.getComputedStyle(node)
   const marginTop = parseInt(computedStyle.marginTop, 10)
   const marginLeft = parseInt(computedStyle.marginLeft, 10)
+
   return {
     top: `${(rect.top - marginTop) + ((addOffset ? 1 : 0) * (window.pageYOffset || document.documentElement.scrollTop))}px`,
     left: `${(rect.left - marginLeft)}px`,
@@ -25,9 +26,7 @@ const getPosition = (node, addOffset = false) => {
 export default {
   props: {
     tag: {
-      type: String,
-      default: 'div'
-    },
+      type: String, default: 'div' },
     id: {
       type: String,
       required: true
@@ -68,6 +67,7 @@ export default {
     },
     animate (cb = () => {}) {
       const a = document.querySelector('[data-clone]')
+      console.log(a)
       const b = this.$el.firstChild
       this.animating = true
       this.transformer = ramjet.transform(a, b, {
@@ -81,13 +81,10 @@ export default {
         }
       })
       ramjet.hide(a, b)
-    }
-  },
-  mounted () {
-    const match = components[this.id]
-    if (match && !matchedEl) {
+    },
+    handleFirstTimeMatch () {
       matchedEl = this.id
-      const clone = this.cloneAndAppend()
+      this.cloneAndAppend()
       const cb = (a, b) => {
         ramjet.show(b)
       }
@@ -98,7 +95,8 @@ export default {
         hasBustableCache && this.bustCache()
         this.cache()
       })
-    } else if (match && matchedEl) {
+    },
+    handleMatch () {
       this.cloneAndAppend()
       const cb = (a, b) => {
         ramjet.show(b)
@@ -109,7 +107,15 @@ export default {
         const clone = document.querySelector('[data-clone]')
         document.body.removeChild(clone)
         this.cache()
-      }) 
+      })
+    }
+  },
+  mounted () {
+    const match = components[this.id]
+    if (match && !matchedEl) {
+      this.handleFirstTimeMatch()
+    } else if (match && matchedEl) {
+      this.handleMatch()
       return
     } else {
       this.cache()
