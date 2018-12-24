@@ -1,104 +1,132 @@
 <script>
 import ramjet from 'ramjet'
-
-const components = {} 
-
+const components = {}
+let returnTrip = {
+  id: '',
+  el: null,
+  pos: null
+}
+let matchedEl = null 
+let hasBustableCache = false
+const getPosition = (node, addOffset = false) => {
+  const rect = node.getBoundingClientRect()
+  const computedStyle = window.getComputedStyle(node)
+  const marginTop = parseInt(computedStyle.marginTop, 10)
+  const marginLeft = parseInt(computedStyle.marginLeft, 10)
+  return {
+    top: `${(rect.top - marginTop) + ((addOffset ? 1 : 0) * (window.pageYOffset || document.documentElement.scrollTop))}px`,
+    left: `${(rect.left - marginLeft)}px`,
+    width: `${rect.width}px`,
+    height: `${rect.height}px`,
+    borderRadius: computedStyle.borderRadius,
+    position: 'absolute'
+  }
+}
 export default {
-  name: 'overdrive',
   props: {
-    id: {
-      type: [String, Number],
-      required: true 
-    },
     tag: {
       type: String,
-      required: false,
       default: 'div'
+    },
+    id: {
+      type: String,
+      required: true
     },
     duration: {
       type: Number,
-      required: false,
-      default: 250
+      duration: 400
     },
     easing: {
       type: Function,
-      required: false,
       default: ramjet.linear
     }
   },
   data () {
     return {
-      cachedPos: {}
+      animating: false,
+      transformer: {}
     }
   },
   methods: {
-    cachePosition () {
-      this.cachedPos  = this.getPosition()
+    cache () {
+      components[this.id] = {
+        el: this.$slots.default,
+        pos: getPosition(this.$el.firstChild)
+      }
     },
-    getPosition (addOffset = false) {
-      const node = this.$el.firstChild;
-      const rect = node.getBoundingClientRect();
-      const computedStyle = getComputedStyle(node);
-      const marginTop = parseInt(computedStyle.marginTop, 10);
-      const marginLeft = parseInt(computedStyle.marginLeft, 10);
-      return {
-        top: (rect.top - marginTop) + ((addOffset ? 1 : 0) * (window.pageYOffset || document.documentElement.scrollTop)) + 'px',
-        left: (rect.left - marginLeft) + 'px',
-        width: rect.width + 'px',
-        height: rect.height + 'px',
-        margin: computedStyle.margin,
-        padding: computedStyle.padding,
-        borderRadius: computedStyle.borderRadius,
-        position: 'absolute'
-      };
-    },
-    animate (prevPosition, el) {
-      const clone = el.firstChild.cloneNode(true)
-      Object.assign(clone.style, prevPosition)
+    cloneAndAppend () {
+      const { el, pos } = components[this.id]
+      const clone = el[0].elm.cloneNode(true)
+      clone.setAttribute('data-clone', true)
+      Object.assign(clone.style, pos);
       document.body.appendChild(clone)
-      
-      const opts = {
+    },
+    bustCache () {
+      Object.keys(components).forEach(id => {
+        components[id] = false
+      })
+    },
+    animate (cb = () => {}) {
+      const a = document.querySelector('[data-clone]')
+      const b = this.$el.firstChild
+      this.animating = true
+      this.transformer = ramjet.transform(a, b, {
         duration: this.duration,
         easing: this.easing,
+        appendToBody: true,
         done: () => {
-          ramjet.show(this.$el.firstChild)
-          document.body.removeChild(clone)
+          cb(a, b)
+          this.animating = false
           this.$emit('animation-end')
         }
-      }
-
-      ramjet.hide(clone)
-      ramjet.hide(this.$el.firstChild)
-      ramjet.transform(clone, this.$el.firstChild, opts)
-    },
-    onHide () {
-      components[this.id] = {
-        id: this.id,
-        el: this.$el,
-        prevPosition: this.cachedPos
-      };
-    },
-    onShow () {
-      const self = this
-
-      if (components[this.id]) {
-        const {prevPosition, el} = components[this.id]
-        components[this.id] = false
-        this.animate(prevPosition, el)
-      }
+      })
+      ramjet.hide(a, b)
     }
   },
   mounted () {
-    this.onShow()
-    this.cachePosition()
+    const match = components[this.id]
+    if (match && !matchedEl) {
+      matchedEl = this.id
+      const clone = this.cloneAndAppend()
+      const cb = (a, b) => {
+        ramjet.show(b)
+      }
+      this.$nextTick(() => {
+        this.animate(cb)
+        const clone = document.querySelector('[data-clone]')
+        document.body.removeChild(clone)
+        hasBustableCache && this.bustCache()
+        this.cache()
+      })
+    } else if (match && matchedEl) {
+      this.cloneAndAppend()
+      const cb = (a, b) => {
+        ramjet.show(b)
+        matchedEl = null
+      }
+      this.$nextTick(() => {
+        this.animate(cb)
+        const clone = document.querySelector('[data-clone]')
+        document.body.removeChild(clone)
+        this.cache()
+      }) 
+      return
+    } else {
+      this.cache()
+    }
   },
   beforeDestroy () {
-    this.onHide()
+    hasBustableCache = Object.keys(components).length > 1
+    if (this.animating) {
+      this.transformer.teardown()
+    }
   },
   render (h) {
     return h(
       this.tag,
-      this.$slots.default
+      [
+        this.$slots.default
+      ]
     )
   }
 }

@@ -7,7 +7,7 @@
     </nav>
     <section class="flex-auto flex items-center justify-center flex-col">
       <h1 class="font-normal text-lg mb-4">Choose a shape!</h1>
-      <div class="wrap bg-grey-lightest border p-3 relative">
+      <div id="shape-wrap" class="wrap bg-grey-lightest border p-3 relative">
         <router-view></router-view>
       </div>
     </section>
