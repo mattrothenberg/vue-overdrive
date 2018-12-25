@@ -27,7 +27,7 @@
 
 <style>
   .circle {
-    border-radius: 100%;
+    border-radius: 99px;
   }
 
   .rect  {

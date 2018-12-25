@@ -10,6 +10,8 @@ import Shapes from '@/components/Shapes'
 import IconIndex from '@/components/IconIndex'
 import IconDetail from '@/components/IconDetail'
 import Sandbox from '@/components/Sandbox'
+import Tiles from '@/components/Tiles'
+import TileDetail from '@/components/TileDetail'
 
 Vue.use(Router)
 
@@ -56,6 +58,20 @@ export default new Router({
       name: 'library-detail',
       components: {
         main: LibraryDetail
+      }
+    },
+    {
+      path: '/tiles',
+      name: 'tiles',
+      components: {
+        main: Tiles 
+      }
+    },
+    {
+      path: '/tiles/:name/',
+      name: 'tile-detail',
+      components: {
+        main: TileDetail 
       }
     },
     {
