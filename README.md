@@ -23,6 +23,9 @@ npm install vue-overdrive
 yarn add vue-overdrive
 ```
 
+## Warning!
+Currently, `vue-overdrive` isn't able to morph between shapes with percentage-based `border-radius` values. You'll need to use a pixel-based value, or you'll get a nasty `TypeError`. The issue is being tracked here: https://github.com/Rich-Harris/ramjet/issues/57
+
 ## Examples
 
 <img src="https://thumbs.gfycat.com/GlamorousThoroughHumpbackwhale-size_restricted.gif" alt="Material" width="320"/>
