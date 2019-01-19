@@ -8,8 +8,7 @@
   "author": "Matt Rothenberg",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel watch src/index.js --out-file overdrive",
-    "build": "parcel build src/index.js --out-file overdrive"
+    "build": "webpack"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -19,11 +18,13 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-vue": "^5.0.0",
-    "parcel-bundler": "^1.11.0",
     "prettier": "^1.15.3",
     "vue": "^2.5.21",
     "vue-hot-reload-api": "^2.3.1",
-    "vue-template-compiler": "^2.5.21"
+    "vue-loader": "^15.5.1",
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
   },
   "dependencies": {
     "ramjet": "^0.6.0-alpha"
