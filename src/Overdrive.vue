@@ -1,13 +1,7 @@
 <script>
 import ramjet from "ramjet";
 const components = {};
-let returnTrip = {
-  id: "",
-  el: null,
-  pos: null
-};
 let matchedEl = null;
-let hasBustableCache = false;
 const getPosition = (node, addOffset = false) => {
   const rect = node.getBoundingClientRect();
   const computedStyle = window.getComputedStyle(node);
@@ -61,7 +55,7 @@ export default {
     cloneAndAppend() {
       const { el, pos } = components[this.id];
       const clone = el[0].elm.cloneNode(true);
-      clone.setAttribute("data-clone", true);
+      clone.setAttribute("data-clone", this.id);
       Object.assign(clone.style, pos);
       document.body.appendChild(clone);
     },
@@ -71,7 +65,7 @@ export default {
       });
     },
     animate(cb = () => {}) {
-      const a = document.querySelector("[data-clone]");
+      const a = document.querySelector(`[data-clone="${this.id}"]`);
       const b = this.$el.firstChild;
       this.animating = true;
       this.transformer = ramjet.transform(a, b, {
@@ -86,20 +80,6 @@ export default {
       });
       ramjet.hide(a, b);
     },
-    handleFirstTimeMatch() {
-      matchedEl = this.id;
-      this.cloneAndAppend();
-      const cb = (a, b) => {
-        ramjet.show(b);
-      };
-      this.$nextTick(() => {
-        this.animate(cb);
-        const clone = document.querySelector("[data-clone]");
-        document.body.removeChild(clone);
-        hasBustableCache && this.bustCache();
-        this.cache();
-      });
-    },
     handleMatch() {
       this.cloneAndAppend();
       const cb = (a, b) => {
@@ -108,7 +88,7 @@ export default {
       };
       this.$nextTick(() => {
         this.animate(cb);
-        const clone = document.querySelector("[data-clone]");
+        const clone = document.querySelector(`[data-clone="${this.id}"]`);
         document.body.removeChild(clone);
         this.cache();
       });
@@ -116,17 +96,13 @@ export default {
   },
   mounted() {
     const match = components[this.id];
-    if (match && !matchedEl) {
-      this.handleFirstTimeMatch();
-    } else if (match && matchedEl) {
+    if (match) {
       this.handleMatch();
-      return;
     } else {
       this.cache();
     }
   },
   beforeDestroy() {
-    hasBustableCache = Object.keys(components).length > 1;
     if (this.animating) {
       this.transformer.teardown();
     }
