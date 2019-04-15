@@ -1,3 +1,6 @@
+### Heads up!
+The fate of this repo is uncertain. I recommend using my new library, [`vue-flip-toolkit`](https://github.com/mattrothenberg/vue-flip-toolkit) for all of your magic-move transition needs.
+
 <p align="center">
   <img width="120" src="https://dzwonsemrish7.cloudfront.net/items/0P31353w2O3M130M2K3r/Artboard%201.png"/>
 </p>
